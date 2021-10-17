@@ -17,8 +17,8 @@ module Players
                 move = "2"
             else
                 Game::WIN_COMBINATIONS.detect do |cmb|
-                    if cmb.selected{ |i| board.position(i+1) == token}.size == 2 && cmb.any? { |i| board.position(i+1) == " "}
-                        move = cmb.selected{ |i| !board.taken?(i+1)}.first.to_i.+(1).to_s
+                    if cmb.select{ |i| board.position(i+1) == token}.size == 2 && cmb.any? { |i| board.position(i+1) == " "}
+                        move = cmb.select{ |i| !board.taken?(i+1)}.first.to_i.+(1).to_s
 
                     elsif cmb.select{|i| board.position(i+1) != " " && board.position(i+1) != token}.size == 2 && cmb.any?{|i| board.position(i+1) == " "}
                         move = cmb.select{|i| !board.taken?(i+1)}.first.to_i.+(1).to_s
